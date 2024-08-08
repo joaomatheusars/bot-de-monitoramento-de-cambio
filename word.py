@@ -9,7 +9,6 @@ def save_file(doc, filename):
     else:
         os.mkdir('word')
         doc.save(f'{os.getcwd()}/word/{filename}.docx')
-        # report(filename)
 
 
 def date_formart(date:str):

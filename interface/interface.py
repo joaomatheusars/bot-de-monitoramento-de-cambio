@@ -5,6 +5,7 @@ from word import create_word
 from report import report
 import datetime
 from time import sleep
+import os
 
 class SilderFrame(CTkFrame):
     def __init__(self, master, **kwargs):
@@ -27,20 +28,22 @@ class SilderFrame(CTkFrame):
 class Interface(CTk):
     def __init__(self):
         super().__init__()
-
+        
+        # Configuração da janela principal.
         self.title("bot de monitoramento de cambio")
         self.minsize(400, 180)
         self.maxsize(400, 180)
         self.grid_columnconfigure(0, weight=1)
         self.resizable(0,0)
+        self.iconbitmap(f'{os.getcwd()}/img/dollar-symbol.ico')
         
         self.frame = SilderFrame(master = self)
         self.frame.grid(row=1, column=0, padx=8, pady=8, sticky="ew")
         
-        self.label_info = CTkLabel(self, text="Sistema para monitorar a cotação do dolar.\n Escolha o intervalo de tempo para realizar a monitoração.")
+        self.label_info = CTkLabel(self, text="Sistema para monitorar a cotação do dolar.\nEscolha o intervalo de tempo para realizar a monitoração.", justify='left', font=('Helvetica', 12, 'bold'))
         self.label_info.grid(row=0, pady=8, sticky="we")
         
-        self.label_coin = CTkLabel(self, text="", state="disabled")
+        self.label_coin = CTkLabel(self, text="", state="disabled", text_color='#0DE814')
         self.label_coin.grid(row=3, pady=8, sticky="we")
         
         self.button = CTkButton(self, text='Monitorar', command=self.button_envent)
@@ -55,13 +58,13 @@ class Interface(CTk):
         self.destroy()
         
     def get_coin(self):
-        try:
+        try:            
             brl, date = price_dolar_brl()
             filename = create_word(brl, date)
             report(filename)
-            self.label_coin.configure(text=f"Último relatório salva às: {datetime.datetime.now().strftime("%H:%M:%S")}")
+            self.label_coin.configure(text=f"Último relatório salvo às: {datetime.datetime.now().strftime("%H:%M:%S")}")
         except:
-            self.label_coin.configure(text=f"Não foi possível realizar a cotação.")
+            self.label_coin.configure(text=f"Não foi possível realizar a cotação.", text_color="red")
         
     def thread_function(self, interval_time):
         agora = datetime.datetime.now()
