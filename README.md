@@ -15,7 +15,7 @@ Este script em Python automatiza o monitoramento das taxas de câmbio do dólar 
 
 1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/eliasalbuquerque/python-price-tracker-bot](https://github.com/joaomatheusars/bot-de-monitoramento-de-cambio
+   git clone https://github.com/joaomatheusars/bot-de-monitoramento-de-cambio
    ```
 
 2. **Instale as dependências:**
