@@ -9,12 +9,11 @@ def first_config():
         ico = requests.get(url).content
         with open(f'{os.getcwd()}/img/dollar-symbol.ico', 'wb') as file:
             file.write(ico)
-        
 
 def main():
     app = Interface()
     app.mainloop()
- 
+
 if __name__ == "__main__":
 	first_config()
 	main()
