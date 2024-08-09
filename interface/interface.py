@@ -30,7 +30,7 @@ class Interface(CTk):
         super().__init__()
         
         # Configuração da janela principal.
-        self.title("bot de monitoramento de cambio")
+        self.title("BOT DE MONITORAMENTO DE CAMBIO")
         self.minsize(400, 180)
         self.maxsize(400, 180)
         self.grid_columnconfigure(0, weight=1)
@@ -41,12 +41,12 @@ class Interface(CTk):
         self.frame.grid(row=1, column=0, padx=8, pady=8, sticky="ew")
         
         self.label_info = CTkLabel(self, text="Sistema para monitorar a cotação do dolar.\nEscolha o intervalo de tempo para realizar a monitoração.", justify='left', font=('Helvetica', 12, 'bold'))
-        self.label_info.grid(row=0, pady=8, sticky="we")
+        self.label_info.grid(row=0, pady=8, padx=0, sticky="we")
         
         self.label_coin = CTkLabel(self, text="", state="disabled", text_color='#0DE814')
         self.label_coin.grid(row=3, pady=8, sticky="we")
         
-        self.button = CTkButton(self, text='Monitorar', command=self.button_envent)
+        self.button = CTkButton(self, text='Monitorar', command=self.button_envent, font=('Helvetica', 12, 'bold'))
         self.button.grid(row=2, column=0, padx=8,sticky="we")
         
         self.protocol("WM_DELETE_WINDOW", self.close_window)
